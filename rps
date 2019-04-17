@@ -1,0 +1,123 @@
+#!/bin/bash
+
+echo "This script will play Rock, Paper, Scissors with you"
+
+game=1
+declare -a array=("r" "p" "s")
+size=${#array[@]}
+
+while [ $game -eq 1 ]
+do
+  echo "Choose Rock (r), Paper (p) or Scissors (s)"
+  read input
+  index=$(($RANDOM % $size))
+  computer=${array[$index]}
+  case "$input" in
+  "r")
+    echo "$input = Rock"
+    case "$computer" in
+    "r")
+      echo "Rock vs Rock = TIE!"
+      echo "    _______     _______    "
+      echo "---'   ____)   (____   '---"
+      echo "      (_____) (_____)      "
+      echo "      (_____) (_____)      "
+      echo "      (____)   (____)      "
+      echo "---.__(___)     (___)__.---"
+      ;;
+    "p")
+      echo "Rock vs Paper = COMPUTER WINS!"
+      echo "    _______         _______     "
+      echo "---'   ____)   ____(____    '---"
+      echo "      (_____) (______           "
+      echo "      (_____) (_______          "
+      echo "      (____)   (_______         "
+      echo "---.__(___)      (__________.---"
+      ;;
+    "s")
+      echo "Rock vs Scissors = PLAYER WINS!"
+      echo "    _______         _______   "
+      echo "---'   ____)   ____(____   '---"
+      echo "      (_____) (______          "
+      echo "      (_____)  (_________      "
+      echo "      (____)       (____)      "
+      echo "---.__(___)         (___)__.---"
+      ;;
+    esac
+    ;;
+  "p")
+    echo "$input = Paper"
+    case "$computer" in
+    "r")
+      echo "Paper vs Rock = PLAYER WINS!"
+      echo "     _______         _______    "
+      echo "---'    ____)____   (____   '---"
+      echo "           ______) (_____)      "
+      echo "          _______) (_____)      "
+      echo "         _______)   (____)      "
+      echo "---.__________)      (___)__.---"
+      ;;
+    "p")
+      echo "Paper vs Paper = TIE!"
+      echo "     _______             _______     "
+      echo "---'    ____)____   ____(____    '---"
+      echo "           ______) (______           "
+      echo "          _______) (_______          "
+      echo "         _______)   (_______         "
+      echo "---.__________)       (__________.---"
+      ;;
+    "s")
+      echo "Paper vs Scissors = COMPUTER WINS!"
+      echo "     _______             _______    "
+      echo "---'    ____)____   ____(____   '---"
+      echo "           ______) (______          "
+      echo "          _______)  (_________      "
+      echo "         _______)       (____)      "
+      echo "---.__________)          (___)__.---"
+      ;;
+    esac
+    ;;
+  "s")
+    echo "$input = Scissors"
+    case "$computer" in
+    "r")
+      echo "Scissors vs Rock = COMPUTER WINS!"
+      echo "    _______          _______    "
+      echo "---'   ____)____    (____   '---"
+      echo "          ______)  (_____)      "
+      echo "       __________) (_____)      "
+      echo "      (____)        (____)      "
+      echo "---.__(___)          (___)__.---"
+      ;;
+    "p")
+      echo "Scissors vs Paper = PLAYER WINS!"
+      echo "    _______              _______     "
+      echo "---'   ____)____    ____(____    '---"
+      echo "          ______)  (______           "
+      echo "       __________) (_______          "
+      echo "      (____)        (_______         "
+      echo "---.__(___)           (__________.---"
+      ;;
+    "s")
+      echo "Scissors vs Scissors = TIE!"
+      echo "    _______             _______    "
+      echo "---'   ____)____   ____(____   '---"
+      echo "          ______) (______          "
+      echo "       __________) (_________      "
+      echo "      (____)           (____)      "
+      echo "---.__(___)             (___)__.---"
+      ;;
+    esac
+    ;;
+  *)
+    echo "That is not a valid input"
+    ;;
+  esac
+
+  echo "Do you want to continue? (Y/n)"
+  read input
+  if [ $input == "n" ]
+  then
+    game=0
+  fi
+done
